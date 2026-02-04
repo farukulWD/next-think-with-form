@@ -285,8 +285,37 @@ const WorkHistoryFields = ({ control }: { control: Control<FormDataType> }) => {
 };
 
 const ComplexForm = () => {
+  const defaultValues: FormDataType = {
+    name: "Faruk Islam",
+    email: "faruk@example.com",
+    secondaryEmail: "faruk.secondary@example.com",
+    phone: "01712345678",
+    dob: new Date("1998-05-15"),
+    gender: "male",
+    address: {
+      street: "House 12, Road 5",
+      city: "Dhaka",
+      state: "Dhaka",
+      zip: "1207",
+    },
+    hobbies: [{ name: "Reading" }, { name: "Coding" }, { name: "Traveling" }],
+    jobTitle: "Frontend Developer",
+    department: "IT",
+    workHistory: [
+      {
+        company: "Gain Solutions Ltd",
+        position: "Frontend Developer",
+        startDate: new Date("2022-01-01"),
+        endDate: new Date("2024-12-31"),
+      },
+    ],
+    terms: true,
+    jobType: "Full-Time",
+    salary: "60000",
+  };
   const form = useForm<FormDataType>({
     resolver: zodResolver(formSchema),
+    defaultValues,
   });
 
   const onSubmit = (data: FormDataType) => {
